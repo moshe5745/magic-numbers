@@ -27,6 +27,6 @@ glailglind = ">= 1.1.3 and < 2.0.0"
 [tailwind]
 args = [
     "--config=tailwind.config.js",
-    "--input=./src/css/app.css",
-    "--output=./priv/css/app.css",
+    "--input=./src/css/styles.css",
+    "--output=./priv/static/css/styles.css",
 ]

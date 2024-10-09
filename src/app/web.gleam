@@ -10,23 +10,20 @@ import wisp
 /// The middleware used here are the ones that are suitable for use in your
 /// typical web application.
 ///
+pub type Context {
+  Context(static_directory: String)
+}
+
 pub fn middleware(
   req: wisp.Request,
+  ctx: Context,
   handle_request: fn(wisp.Request) -> wisp.Response,
 ) -> wisp.Response {
-  // Permit browsers to simulate methods other than GET and POST using the
-  // `_method` query parameter.
   let req = wisp.method_override(req)
-
-  // Log information about the request and response.
   use <- wisp.log_request(req)
-
-  // Return a default 500 response if the request handler crashes.
   use <- wisp.rescue_crashes
-
-  // Rewrite HEAD requests to GET requests and return an empty body.
   use req <- wisp.handle_head(req)
+  use <- wisp.serve_static(req, under: "/static", from: ctx.static_directory)
 
-  // Handle the request!
   handle_request(req)
 }

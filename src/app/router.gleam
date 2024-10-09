@@ -1,45 +1,68 @@
-import app/web
-import gleam/erlang
+import app/web.{type Context}
 import gleam/int
 import gleam/list
-import gleam/set
 import gleam/string
 import gleam/string_builder
-import prng/random
-import prng/seed.{type Seed}
 import wisp.{type Request, type Response}
 
 /// The HTTP request handler- your application!
 ///
-pub fn handle_request(req: Request) -> Response {
-  // Apply the middleware stack for this request/response.
-  use _req <- web.middleware(req)
+pub fn handle_request(req: Request, ctx: Context) -> Response {
+  use _req <- web.middleware(req, ctx)
 
-  let seed = seed.new(erlang.system_time(erlang.Nanosecond))
+  let regular_numbers =
+    list.range(1, 37)
+    |> list.shuffle
+    |> list.take(6)
+  let assert Ok(strong_number) =
+    list.range(1, 7)
+    |> list.shuffle
+    |> list.first
 
-  let #(strong_number, _) = random.step(random.int(1, 7), seed)
-  let regular_numbers = generate_distinct(seed)
   let number_strings = list.map(regular_numbers, int.to_string)
-  let joined_string = number_strings |> string.join(", ")
-
-  let body =
-    string_builder.from_string("<h1>")
-    |> string_builder.append(joined_string)
-    |> string_builder.append("   #|#   ")
-    |> string_builder.append(int.to_string(strong_number))
-    |> string_builder.append("</h1>")
+  // let joined_string = number_strings |> string.join(", ")
+  let html =
+    string_builder.from_string(generate_lottery_html(
+      number_strings,
+      int.to_string(strong_number),
+    ))
 
   // Return a 200 OK response with the body and a HTML content type.
-  wisp.html_response(body, 200)
+  wisp.html_response(html, 200)
 }
 
-fn generate_distinct(seed: Seed) -> List(Int) {
-  let regular_number_gen = random.fixed_size_set(random.int(1, 37), 6)
-  let #(regular_numbers_set, _) = regular_number_gen |> random.step(seed)
-  let regular_numbers_list = regular_numbers_set |> set.to_list
+pub fn generate_lottery_html(
+  regular_numbers: List(String),
+  strong_number: String,
+) -> String {
+  let regular_numbers_html =
+    list.map(regular_numbers, fn(num) {
+      "<div class='bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold'>"
+      <> num
+      <> "</div>"
+    })
+    |> string.join("\n")
 
-  case list.length(regular_numbers_list) == 6 {
-    True -> regular_numbers_list
-    False -> generate_distinct(seed)
-  }
+  let strong_number_html =
+    "<div class='bg-red-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold'>"
+    <> strong_number
+    <> "</div>"
+
+  "
+  <!DOCTYPE html>
+  <html lang='en'>
+  <head>
+      <meta charset='UTF-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+      <link rel=\"stylesheet\" href=\"/static/css/styles.css\">
+      <title>Lottery Numbers</title>
+  </head>
+  <body class='bg-gray-100 min-h-screen flex items-center justify-center'>
+      <div class='bg-white p-8 rounded-xl shadow-lg w-full max-w-md'>
+          <h1 class='text-2xl font-bold text-center mb-6'>Magic numbers</h1>
+          <div class='flex flex-wrap justify-center gap-4'>" <> regular_numbers_html <> " " <> strong_number_html <> "</div>
+      </div>
+  </body>
+  </html>
+  "
 }
