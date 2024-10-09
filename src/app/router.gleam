@@ -17,14 +17,12 @@ pub fn handle_request(req: Request) -> Response {
   use _req <- web.middleware(req)
 
   let seed = seed.new(erlang.system_time(erlang.Nanosecond))
-  let regular_number_gen = random.int(1, 37)
-  let strong_number_gen = random.int(1, 7)
-  let regular_numbers = random.fixed_size_list(regular_number_gen, 6)
 
-  let #(roll_result, _) = regular_numbers |> random.step(seed)
-  let #(strong_number, _) = random.step(strong_number_gen, seed)
+  let regular_number_gen = random.fixed_size_list(random.int(1, 37), 6)
+  let #(regular_numbers, _) = regular_number_gen |> random.step(seed)
+  let #(strong_number, _) = random.step(random.int(1, 7), seed)
 
-  let number_strings = list.map(roll_result, int.to_string)
+  let number_strings = list.map(regular_numbers, int.to_string)
   let joined_string = string.join(number_strings, ", ")
 
   let body =
