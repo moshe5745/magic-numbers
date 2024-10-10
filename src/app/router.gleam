@@ -37,14 +37,14 @@ pub fn generate_lottery_html(
 ) -> String {
   let regular_numbers_html =
     list.map(regular_numbers, fn(num) {
-      "<div class='bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold'>"
+      "<div class='bg-amber-400 text-black w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold'>"
       <> num
       <> "</div>"
     })
     |> string.join("\n")
 
   let strong_number_html =
-    "<div class='bg-red-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold'>"
+    "<div class='bg-red-800 text-white w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold'>"
     <> strong_number
     <> "</div>"
 
@@ -57,12 +57,31 @@ pub fn generate_lottery_html(
       <link rel=\"stylesheet\" href=\"/static/css/styles.css\">
       <title>Lottery Numbers</title>
   </head>
-  <body class='bg-gray-100 min-h-screen flex items-center justify-center'>
-      <div class='bg-white p-8 rounded-xl shadow-lg w-full max-w-md'>
-          <h1 class='text-2xl font-bold text-center mb-6'>Magic numbers</h1>
-          <div class='flex flex-wrap justify-center gap-4'>" <> regular_numbers_html <> " " <> strong_number_html <> "</div>
-      </div>
+  <body class='bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 p-4 min-h-screen flex items-center justify-center'>
+  <div class='max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+      <div class='flex flex-wrap justify-center gap-3'>" <> regular_numbers_html <> " " <> strong_number_html <> "</div>
+  </div>
   </body>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
+  <div class='firefly'></div>
   </html>
   "
 }
