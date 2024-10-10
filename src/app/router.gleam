@@ -33,14 +33,14 @@ pub fn generate_html(
 ) -> String {
   let regular_numbers_html =
     list.map(regular_numbers, fn(num) {
-      "<div class='bg-amber-400 text-black w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold'>"
+      "<div class='bg-amber-400 text-black w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold border border-gray-200 dark:border-gray-700'>"
       <> num
       <> "</div>"
     })
     |> string.join("\n")
 
   let strong_number_html =
-    "<div class='bg-red-800 text-white w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold'>"
+    "<div class='bg-red-800 text-white w-10 h-10 rounded-md flex items-center justify-center text-2xl font-bold border border-gray-200 dark:border-gray-700'>"
     <> strong_number
     <> "</div>"
 
@@ -51,7 +51,7 @@ pub fn generate_html(
       <meta charset='UTF-8'>
       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
       <link rel=\"stylesheet\" href=\"/static/css/styles.css\">
-      <title>Lottery Numbers</title>
+      <title>Magic numbers</title>
   </head>
   <body class='bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 p-4 min-h-screen flex items-center justify-center'>
   <div class='max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
