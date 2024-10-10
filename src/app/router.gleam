@@ -5,8 +5,6 @@ import gleam/string
 import gleam/string_builder
 import wisp.{type Request, type Response}
 
-/// The HTTP request handler- your application!
-///
 pub fn handle_request(req: Request, ctx: Context) -> Response {
   use _req <- web.middleware(req, ctx)
 
@@ -20,18 +18,16 @@ pub fn handle_request(req: Request, ctx: Context) -> Response {
     |> list.first
 
   let number_strings = list.map(regular_numbers, int.to_string)
-  // let joined_string = number_strings |> string.join(", ")
   let html =
-    string_builder.from_string(generate_lottery_html(
+    string_builder.from_string(generate_html(
       number_strings,
       int.to_string(strong_number),
     ))
 
-  // Return a 200 OK response with the body and a HTML content type.
   wisp.html_response(html, 200)
 }
 
-pub fn generate_lottery_html(
+pub fn generate_html(
   regular_numbers: List(String),
   strong_number: String,
 ) -> String {
