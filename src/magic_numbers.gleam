@@ -33,6 +33,6 @@ pub fn static_directory() -> String {
   // including static assets to be served.
   // This function returns an absolute path and works both in development and in
   // production after compilation.
-  let assert Ok(priv_directory) = wisp.priv_directory("random_numbers")
+  let assert Ok(priv_directory) = wisp.priv_directory("magic_numbers")
   priv_directory <> "/static"
 }
