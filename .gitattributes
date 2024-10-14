@@ -1,0 +1,6 @@
+# Include only Gleam and JavaScript files in linguist language statistics
+*.gleam linguist-language=Gleam
+*.js linguist-language=JavaScript
+
+# Exclude all other file types from language statistics
+* linguist-vendored

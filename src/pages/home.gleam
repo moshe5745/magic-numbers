@@ -38,12 +38,12 @@ pub fn home_page() {
       <div class='min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8'>
           <div class='w-full text-gray-300 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
               <p>Welcome to a hands-on exploration of modern web development strategies!<br><br>
-                  This site demonstrates the key approaches for building web applications, including
-                  Server-Side Rendering (SSR), Static Sites, HTMX for partial updates, and Single Page
-                  Applications (SPA).<br><br>
-                  Explore each method to understand their unique strengths and use cases.
+                  This is a demo project for eduaction purpouse.
               </p>
           </div>
+          <a href='https://github.com/moshe5745/magic-numbers' target='_blank' class='mt-4'>
+            <img src='/static/images/github.svg' alt='GitHub' class='h-8 w-8 md:h-10 md:w-10'>
+          </a>
       </div>
   </div>
   </body>
