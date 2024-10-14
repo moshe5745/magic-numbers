@@ -48,9 +48,12 @@ pub fn home_page() {
               <a href='https://github.com/moshe5745/magic-numbers' target='_blank' class='mt-4 inline-block'>
                   <img src='/images/github.svg' alt='GitHub' class='h-8 w-8 md:h-10 md:w-10'>
               </a>
-              <a href='https://gleam.run' target='_blank' class='mt-4 inline-block'>
+              <div class='flex flex-row items-center mt-4'>
+              <p class='text-gray-300 pe-1'>Made with</p>
+              <a href='https://gleam.run' target='_blank' class='inline-block'>
                   <img src='/images/gleam.svg' alt='Gleam' class='h-8 w-8 md:h-10 md:w-10'>
               </a>
+              </div>
           </div>
       </div>
   </div>

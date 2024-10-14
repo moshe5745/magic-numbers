@@ -894,6 +894,10 @@ select {
   padding-bottom: 0.5rem;
 }
 
+.pe-1 {
+  padding-inline-end: 0.25rem;
+}
+
 .text-center {
   text-align: center;
 }
