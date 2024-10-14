@@ -47,8 +47,8 @@ pub fn generate_html(
   <head>
       <meta charset='UTF-8'>
       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-      <link rel=\"stylesheet\" href=\"/static/css/styles.css\">
-      <script src='/static/js/network-log.js'></script>
+      <link rel=\"stylesheet\" href=\"/css/styles.css\">
+      <script src='/js/network-log.js'></script>
       <title>Magic numbers</title>
   </head>
   <body class='bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 p-4 min-h-screen'>

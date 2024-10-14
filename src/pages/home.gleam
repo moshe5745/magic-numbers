@@ -9,7 +9,7 @@ pub fn home_page() {
   <head>
       <meta charset='UTF-8'>
       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-      <link rel='stylesheet' href='/static/css/styles.css'>
+      <link rel='stylesheet' href='/css/styles.css'>
       <title>Magic numbers</title></head>
   <body class='bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 p-4 min-h-screen'>
   <div class='flex flex-col items-center justify-center'>
@@ -38,12 +38,20 @@ pub fn home_page() {
       <div class='min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8'>
           <div class='w-full text-gray-300 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
               <p>Welcome to a hands-on exploration of modern web development strategies!<br><br>
-                  This is a demo project for eduaction purpouse.
+                  This site demonstrates the key approaches for building web applications, including
+                  Server-Side Rendering (SSR), Static Sites, HTMX for partial updates, and Single Page
+                  Applications (SPA).<br><br>
+                  Explore each method to understand their unique strengths and use cases.
               </p>
           </div>
-          <a href='https://github.com/moshe5745/magic-numbers' target='_blank' class='mt-4'>
-            <img src='/static/images/github.svg' alt='GitHub' class='h-8 w-8 md:h-10 md:w-10'>
-          </a>
+          <div class='flex flex-row justify-between w-full'>
+              <a href='https://github.com/moshe5745/magic-numbers' target='_blank' class='mt-4 inline-block'>
+                  <img src='/images/github.svg' alt='GitHub' class='h-8 w-8 md:h-10 md:w-10'>
+              </a>
+              <a href='https://gleam.run' target='_blank' class='mt-4 inline-block'>
+                  <img src='/images/gleam.svg' alt='Gleam' class='h-8 w-8 md:h-10 md:w-10'>
+              </a>
+          </div>
       </div>
   </div>
   </body>
