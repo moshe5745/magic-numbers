@@ -1,3 +1,4 @@
+import gleam/int
 import gleam/json.{int}
 import gleam/list
 import wisp
@@ -7,6 +8,8 @@ pub fn api_numbers() {
     list.range(1, 37)
     |> list.shuffle
     |> list.take(6)
+    |> list.sort(by: int.compare)
+
   let assert Ok(strong_number) =
     list.range(1, 7)
     |> list.shuffle

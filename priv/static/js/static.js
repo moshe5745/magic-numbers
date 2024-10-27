@@ -9,16 +9,23 @@ function generateNumbers() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Update the first 6 divs with numbers between 1 and 37
+  // Generate and sort the first 6 numbers between 1 and 37
+  const firstSixNumbers = [];
   for (let i = 0; i < 6; i++) {
-    numberDivs[i].textContent = generateRandomNumber(1, 37);
+    firstSixNumbers.push(generateRandomNumber(1, 37));
+  }
+  firstSixNumbers.sort((a, b) => a - b);
+
+  // Update the first 6 divs with sorted numbers
+  for (let i = 0; i < 6; i++) {
+    numberDivs[i].textContent = firstSixNumbers[i];
   }
 
   // Update the 7th div with a number between 1 and 7
   numberDivs[6].textContent = generateRandomNumber(1, 7);
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("refreshButton")
     .addEventListener("click", generateNumbers);
