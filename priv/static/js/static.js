@@ -9,19 +9,21 @@ function generateNumbers() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Generate and sort the first 6 numbers between 1 and 37
-  const firstSixNumbers = [];
-  for (let i = 0; i < 6; i++) {
-    firstSixNumbers.push(generateRandomNumber(1, 37));
-  }
-  firstSixNumbers.sort((a, b) => a - b);
-
-  // Update the first 6 divs with sorted numbers
-  for (let i = 0; i < 6; i++) {
-    numberDivs[i].textContent = firstSixNumbers[i];
+  // Generate 6 unique numbers between 1 and 37
+  const firstSixNumbers = new Set();
+  while (firstSixNumbers.size < 6) {
+    firstSixNumbers.add(generateRandomNumber(1, 37));
   }
 
-  // Update the 7th div with a number between 1 and 7
+  // Convert the set to an array and sort it
+  const sortedNumbers = Array.from(firstSixNumbers).sort((a, b) => a - b);
+
+  // Update the first 6 divs with sorted, unique numbers
+  for (let i = 0; i < 6; i++) {
+    numberDivs[i].textContent = sortedNumbers[i];
+  }
+
+  // Update the 7th div with a unique number between 1 and 7
   numberDivs[6].textContent = generateRandomNumber(1, 7);
 }
 
